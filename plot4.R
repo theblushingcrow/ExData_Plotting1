@@ -46,12 +46,12 @@ relevantData <- read.table(fileName, sep = ";", header = TRUE, skip = relevantSt
 
 dateTime <- strptime((paste(relevantData[,1], relevantData[,2])), format = "%d/%m/%Y %H:%M:%S")
 maxima <- c(max(relevantData[,6]), max(relevantData[,7]), max(relevantData[,8]))
-maximalSubMetering <- which(maxima == max(maxima))+2
+maximalSubMetering <- which(maxima == max(maxima))+5
 
 # plot data and save to png
 png(filename = "./plot4.png", width = 480, height = 480, units = "px")
 par(mfrow=c(2,2))
-plot(dateTimes, relevantData[,3], type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
+plot(dateTimes, relevantData[,3], type = "l", xlab = "", ylab = "Global Active Power")
 plot(dateTimes, relevantData[,5], type = "l", xlab = "datetime", ylab = "Voltage")
 plot(dateTimes, relevantData[,maximalSubMetering], type = "n", xlab = "", ylab = "Energy sub metering")
 lines(dateTimes, relevantData[,6], col="black")
@@ -61,5 +61,5 @@ legend("topright",
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        col = c("black", "blue", "red"), 
        lty=c(1, 1))
-plot(dateTimes, relevantData[,4], type = "l", xlab = "datetime", ylab = "Global_Reactive_Power (kilowatts)")
+plot(dateTimes, relevantData[,4], type = "l", xlab = "datetime", ylab = "Global_Reactive_Power")
 dev.off()
