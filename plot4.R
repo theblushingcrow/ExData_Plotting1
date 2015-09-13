@@ -60,6 +60,7 @@ lines(dateTimes, relevantData[,8], col="blue")
 legend("topright", 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        col = c("black", "blue", "red"), 
-       lty=c(1, 1))
+       lty=c(1, 1), 
+       bty="n")
 plot(dateTimes, relevantData[,4], type = "l", xlab = "datetime", ylab = "Global_Reactive_Power")
 dev.off()
